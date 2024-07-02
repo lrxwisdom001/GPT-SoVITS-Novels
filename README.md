@@ -33,13 +33,15 @@ https://www.bilibili.com/video/BV1rA4m157aw/?share_source=copy_web&vd_source=e8e
 conda env creat -n Novels python=3.10
 conda activate Novels
 pip install git-lfs
-pip install -r requirements.txt
+
   ```
 git-lfs 必须安装,用brew,apt-get等工具安装也可，否则后面GPT-SoVITS会报错。
 
+下载项目文件，安装依赖库。
  ```bash
 git clone https://github.com/lrxwisdom001/GPT-SoVITS-Novels.git
 cd GPT-SoVITS-Novels
+pip install -r requirements.txt
 mkdir pretrained_models && cd pretrained_models && git lfs clone https://huggingface.co/lj1995/GPT-SoVITS
   ```
 下载Baidu网盘或者Google Drive里面的样本声音和配置文件，解压之后放入Voice_data文件夹（若使用自己的声音样本，此步可跳过。但需要修改 voice_server_config.json）
