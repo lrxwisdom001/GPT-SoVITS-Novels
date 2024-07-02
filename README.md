@@ -54,11 +54,10 @@ Hugging Face：https://huggingface.co/datasets/lrxwisdom001/GPT-SoVITS-Novels/bl
 下载GPT-SoVITS
  ```bash
 git clone https://github.com/RVC-Boss/GPT-SoVITS.git
-cd GPT-SoVITS
-mkdir pretrained_models && cd pretrained_models && git lfs clone https://huggingface.co/lj1995/GPT-SoVITS
-mv pretrained_models/GPT-SoVITS/* .
-rm -rf pretrained_models/GPT-SoVITS
-cd ../..
+cd GPT-SoVITS/GPT_SoVITS/pretrained_models && git lfs clone https://huggingface.co/lj1995/GPT-SoVITS
+mv GPT-SoVITS/* .
+rm -rf GPT-SoVITS
+cd ../../..
   ```
 
 在gpt_script.py中输入或者在系统环境中设置自己的openai api_key
