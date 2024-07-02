@@ -33,8 +33,9 @@ https://www.bilibili.com/video/BV1rA4m157aw/?share_source=copy_web&vd_source=e8e
 conda env creat -n Novels python=3.10
 conda activate Novels
 pip install git-lfs
+pip install -r requirements.txt
   ```
-git-lfs 用brew,apt-get等工具安装也可，但必须安装，否则后面GPT-SoVITS会报错。
+git-lfs 必须安装,用brew,apt-get等工具安装也可，否则后面GPT-SoVITS会报错。
 
  ```bash
 git clone https://github.com/lrxwisdom001/GPT-SoVITS-Novels.git
