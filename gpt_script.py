@@ -4,7 +4,7 @@ import json
 import os
 
 def generate_gpt_response(config, novel_content):
-    client = OpenAI(api_key="")
+    client = OpenAI(api_key="ENTER_YOUR_KEY")
 
     prompt1 = "以下Json中包含几个声音的信息，包括name，male，p等："
     prompt2 = '''
