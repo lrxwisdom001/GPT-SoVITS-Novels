@@ -19,8 +19,6 @@ Let Genshin characters read novels for you!
 合成样本需要用到，5个原神角色声音（派蒙，久岐忍，五郎，班尼特，艾尔海森）的样本及对应的GPT-SoVITS配置文件。
 由于Github容量限制，传到Baidu网盘和Hugging Face，链接见快速上手教程 ["Voice_data.zip"下载地址](#1)
 
-
-
 更多声音样本和配置文件请转到：
 特看科技的滚石 
 【原神全角色GPT-sovits音色模型克隆，八重神子的声音太酥了啊啊啊啊】 
@@ -35,7 +33,7 @@ conda activate Novels
 pip install git-lfs
 
   ```
-git-lfs 必须安装,用brew,apt-get等工具安装也可，否则后面GPT-SoVITS会报错。
+git-lfs 必须安装，用brew，apt-get等工具安装也可，否则后面GPT-SoVITS会报错。
 
 下载项目文件，安装依赖库。
  ```bash
