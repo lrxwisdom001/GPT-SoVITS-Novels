@@ -75,7 +75,8 @@ python main.py
 最终生成 combined.mp3
 
 ## 视频简介、教学、及效果展示
-待制作
+bilibili
+<iframe src="//player.bilibili.com/player.html?isOutside=true&aid=112717994134816&bvid=BV1Q3heeHE2k&cid=500001603131896&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
 
 ## 后续工作
 - [ ]加入更多语言和角色的samples
