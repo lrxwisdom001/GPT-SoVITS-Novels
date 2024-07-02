@@ -48,7 +48,7 @@ pip install -r requirements.txt
 Baidu网盘：链接: https://pan.baidu.com/s/1EmfepzvqtYnWbxtEpxcylQ?pwd=ry63 提取码: ry63 
 
 Hugging Face：https://huggingface.co/datasets/lrxwisdom001/GPT-SoVITS-Novels/blob/main/Voice_data.zip
- ```
+  ```
 
 下载GPT-SoVITS
  ```bash
