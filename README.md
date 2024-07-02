@@ -49,6 +49,8 @@ mkdir pretrained_models && cd pretrained_models && git lfs clone https://hugging
 git clone https://github.com/lrxwisdom001/GPT-SoVITS-Novels.git
 cd GPT-SoVITS-Novels
   ```
+
+需要输入自己的openai api_key
 运行
  ```bash
 python main.py
@@ -62,3 +64,22 @@ python main.py
 - [ ]加入更多语言和角色的samples
 - [ ]加入情绪分析
 - [ ]基于情绪分析自动插入音乐
+
+## 参考与学习
+ ```code
+排名不分先后
+GPT-SoVITS原始项目
+https://github.com/RVC-Boss/GPT-SoVITS
+
+OpenAI API
+https://openai.com/index/openai-api/
+
+特看科技的滚石【原神全角色GPT-sovits音色模型克隆，八重神子的声音太酥了啊啊啊啊】 
+https://www.bilibili.com/video/BV1rA4m157aw/?share_source=copy_web&vd_source=e8e5bbbe8195c50ca4a9ea44fdd8843c
+
+哔哩哔哩聊天机器人
+https://github.com/linyiLYi/bilibot
+
+GPT-SoVITS 音频合成在线 Demo
+https://openbayes.com/console/GraceXiii/containers/3AB3h9950IN
+  ```
