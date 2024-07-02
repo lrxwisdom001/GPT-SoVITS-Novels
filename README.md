@@ -41,7 +41,7 @@ git clone https://github.com/lrxwisdom001/GPT-SoVITS-Novels.git
 cd GPT-SoVITS-Novels
 pip install -r requirements.txt
   ```
-下载Baidu网盘或者Google Drive里面的样本声音和配置文件，解压之后放入Voice_data文件夹（若使用自己的声音样本，此步可跳过。但需要修改 voice_server_config.json）
+下载Baidu网盘或者Google Drive里面的样本声音和配置文件，解压之后文件放入Voice_data文件夹（若使用自己的声音样本，此步可跳过。但需要修改 voice_server_config.json）
 
 <p id="1">"Voice_data.zip"下载地址</p> 
 
