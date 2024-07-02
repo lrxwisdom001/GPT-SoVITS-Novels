@@ -75,8 +75,8 @@ python main.py
 最终生成 combined.mp3
 
 ## 视频简介、教学、及效果展示
-bilibili【GPT-SoVITS-Novels 让原神角色们替你念小说吧】 https://www.bilibili.com/video/BV1Q3heeHE2k/?share_source=copy_web&vd_source=e8e5bbbe8195c50ca4a9ea44fdd8843c
-
+bilibili:【GPT-SoVITS-Novels 让原神角色们替你念小说吧】 https://www.bilibili.com/video/BV1Q3heeHE2k/?share_source=copy_web&vd_source=e8e5bbbe8195c50ca4a9ea44fdd8843c
+youtube: [Eng sub+ CN sub]【GPT-SoVITS-Novels】 Let Genshin characters read novels for you!https://youtu.be/yryOkQoHb5M?si=dGyerWanyJHLPoDD
 ## 后续工作
 - [ ]加入更多语言和角色的samples
 - [ ]加入情绪分析
