@@ -17,8 +17,7 @@ Let Genshin characters read novels for you!
 包括代码，1个小说《不让江山》的片段，及合成的后的声音样本。
 
 合成样本需要用到，5个原神角色声音（派蒙，久岐忍，五郎，班尼特，艾尔海森）的样本及对应的GPT-SoVITS配置文件。
-由于Github容量限制，传到Baidu网盘和Hugging Face,链接见快速上手教程 
-链接地址 = #目标内容。
+由于Github容量限制，传到Baidu网盘和Hugging Face,链接见快速上手教程 #1
 
 
 
@@ -43,7 +42,8 @@ cd GPT-SoVITS-Novels
 mkdir pretrained_models && cd pretrained_models && git lfs clone https://huggingface.co/lj1995/GPT-SoVITS
   ```
 下载Baidu网盘或者Google Drive里面的样本声音和配置文件，解压之后放入Voice_data文件夹（若使用自己的声音样本，此步可跳过。但需要修改 voice_server_config.json）
-锚点 = [内容](#目标内容 "Voice_data.zip")
+
+<p id="1">"Voice_data.zip"下载地址</p> 
 Baidu网盘：链接: https://pan.baidu.com/s/1EmfepzvqtYnWbxtEpxcylQ?pwd=ry63 提取码: ry63 
 
 Hugging Face：https://huggingface.co/datasets/lrxwisdom001/GPT-SoVITS-Novels/blob/main/Voice_data.zip
