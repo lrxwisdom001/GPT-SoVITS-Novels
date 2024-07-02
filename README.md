@@ -17,7 +17,7 @@ Let Genshin characters read novels for you!
 包括代码，1个小说《不让江山》的片段，及合成的后的声音样本。
 
 合成样本需要用到，5个原神角色声音（派蒙，久岐忍，五郎，班尼特，艾尔海森）的样本及对应的GPT-SoVITS配置文件。
-由于Github容量限制，传到Baidu网盘和Hugging Face,链接见快速上手教程 （#1）
+由于Github容量限制，传到Baidu网盘和Hugging Face,链接见快速上手教程 [1. 这是一个目录跳转示例](#1)
 
 
 
