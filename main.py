@@ -1,3 +1,5 @@
+#!/usr/bin/python
+# -*- coding: UTF-8 -*-
 import json,os
 from gpt_script import generate_gpt_response,extract_info_from_gpt
 from voice_script import synthesize_voice
