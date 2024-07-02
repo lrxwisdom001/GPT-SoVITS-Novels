@@ -56,7 +56,7 @@ def start_GPT_SoVITS(config,voice_data_path):
 
     # 遍历每条命令并构建命令行参数字符串
     os.chdir('./GPT-SoVITS')
-    print(os.getcwd())
+    #print(os.getcwd())
 
     for p in range(9880,9990):
         # 释放端口,好开启GPT-SoVITS
@@ -82,7 +82,7 @@ def start_GPT_SoVITS(config,voice_data_path):
     input()
 
     os.chdir('../')
-    print(os.getcwd())
+    # print(os.getcwd())
     #
     # 这一段没用
     # # 检查所有子进程是否成功启动
