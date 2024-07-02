@@ -75,8 +75,7 @@ python main.py
 最终生成 combined.mp3
 
 ## 视频简介、教学、及效果展示
-bilibili
-<iframe src="//player.bilibili.com/player.html?isOutside=true&aid=112717994134816&bvid=BV1Q3heeHE2k&cid=500001603131896&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+bilibili【GPT-SoVITS-Novels 让原神角色们替你念小说吧】 https://www.bilibili.com/video/BV1Q3heeHE2k/?share_source=copy_web&vd_source=e8e5bbbe8195c50ca4a9ea44fdd8843c
 
 ## 后续工作
 - [ ]加入更多语言和角色的samples
