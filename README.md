@@ -44,6 +44,7 @@ cd GPT-SoVITS-Novels
 mkdir pretrained_models && cd pretrained_models && git lfs clone https://huggingface.co/lj1995/GPT-SoVITS
   ```
 下载Baidu网盘或者Google Drive里面的样本声音和配置文件，解压之后放入Voice_data文件夹（若使用自己的声音样本，此步可跳过。但需要修改 voice_server_config.json）
+
 下载GPT-SoVITS
  ```bash
 git clone https://github.com/lrxwisdom001/GPT-SoVITS-Novels.git
