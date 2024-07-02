@@ -40,7 +40,6 @@ git-lfs 必须安装，用brew，apt-get等工具安装也可，否则后面GPT-
 git clone https://github.com/lrxwisdom001/GPT-SoVITS-Novels.git
 cd GPT-SoVITS-Novels
 pip install -r requirements.txt
-mkdir pretrained_models && cd pretrained_models && git lfs clone https://huggingface.co/lj1995/GPT-SoVITS
   ```
 下载Baidu网盘或者Google Drive里面的样本声音和配置文件，解压之后放入Voice_data文件夹（若使用自己的声音样本，此步可跳过。但需要修改 voice_server_config.json）
 
@@ -51,11 +50,12 @@ Hugging Face：https://huggingface.co/datasets/lrxwisdom001/GPT-SoVITS-Novels/bl
 
 下载GPT-SoVITS
  ```bash
-git clone https://github.com/lrxwisdom001/GPT-SoVITS-Novels.git
+https://github.com/RVC-Boss/GPT-SoVITS.git
 cd GPT-SoVITS-Novels
+mkdir pretrained_models && cd pretrained_models && git lfs clone https://huggingface.co/lj1995/GPT-SoVITS
   ```
 
-需要输入自己的openai api_key
+在gpt_script.py中输入或者在系统环境中设置自己的openai api_key
 运行
  ```bash
 python main.py
