@@ -49,7 +49,7 @@ def start_GPT_SoVITS(config,voice_data_path):
     with open('./voice_server_config.json', 'r', encoding='utf-8') as f:
         commands = json.load(f)
 
-    print('即将开启 GPT-SoVITS服务，若开启成功会显示：\nINFO:     Uvicorn running on http://127.0.0.1:988X (Press CTRL+C to quit)\n请耐心等待，开启成功请按回车Enter继续。。。\n\n')
+    print('即将开启 GPT-SoVITS服务，若开启成功会显示：\nINFO:     Uvicorn running on http://127.0.0.1:988X (Press CTRL+C to quit)\n请耐心等待，开启成功后，请按回车Enter继续。。。\n\n')
     time.sleep(3)
     # 存储所有子进程
     processes = []
