@@ -56,6 +56,8 @@ Hugging Face：https://huggingface.co/datasets/lrxwisdom001/GPT-SoVITS-Novels/bl
 git clone https://github.com/RVC-Boss/GPT-SoVITS.git
 cd GPT-SoVITS
 mkdir pretrained_models && cd pretrained_models && git lfs clone https://huggingface.co/lj1995/GPT-SoVITS
+mv pretrained_models/GPT-SoVITS/* .
+rm -rf pretrained_models/GPT-SoVITS
 cd ../..
   ```
 
