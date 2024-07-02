@@ -28,7 +28,7 @@ https://www.bilibili.com/video/BV1rA4m157aw/?share_source=copy_web&vd_source=e8e
 ## 快速上手
 创建python 环境
  ```bash
-conda create --name Novels python=3.10
+conda create --name Novels python=3.10 ffmpeg
 conda activate Novels
 pip install git-lfs
 
@@ -39,6 +39,8 @@ git-lfs 必须安装，用brew，apt-get等工具安装也可，否则后面GPT-
  ```bash
 git clone https://github.com/lrxwisdom001/GPT-SoVITS-Novels.git
 cd GPT-SoVITS-Novels
+mkdir Output_temp
+mkdir Voice_data
 pip install -r requirements.txt
   ```
 下载Baidu网盘或者Google Drive里面的样本声音和配置文件，解压之后文件放入Voice_data文件夹（若使用自己的声音样本，此步可跳过。但需要修改 voice_server_config.json）
