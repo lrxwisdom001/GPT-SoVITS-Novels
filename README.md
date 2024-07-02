@@ -2,7 +2,7 @@
 Let Genshin characters read novels for you!
 
 ## 郑重声明：本项目提供的样本音源和文本仅供学习参考使用，请勿用于商业用途
-(![tumblr_e7341da0b29fcf3907f544850269de7b_2a3f778f_400](https://github.com/lrxwisdom001/GPT-SoVITS-Novels/assets/106758196/69cb3a68-9f6e-4211-bc9b-9222efdac845)
+([tumblr_e7341da0b29fcf3907f544850269de7b_2a3f778f_200](https://github.com/lrxwisdom001/GPT-SoVITS-Novels/assets/106758196/69cb3a68-9f6e-4211-bc9b-9222efdac845)
 
 ## 什么是GPT-SoVITS-Novels？
 本项目利用ChatGPT的openai api和GPT-SoVITS，快速将任意的小说文本转换成多角色联播的有声读物。
