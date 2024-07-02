@@ -92,7 +92,7 @@ def start_GPT_SoVITS(config,voice_data_path):
     #     print("所有服务已成功启动。")
 
 
-    continue_or_not('请检查,角色声音对应表(novel_modified4tts.md),确认无误后，')
+    continue_or_not('请检查,角色声音对应表(characters2voice.json),确认无误后，')
     continue_or_not('即将开始语音合成，本操作将先删除Output_temp文件夹中的临时文件，请确认已保留必要备份！！！')
     #清空临时文件夹
     files = glob.glob('./Output_temp/*')
