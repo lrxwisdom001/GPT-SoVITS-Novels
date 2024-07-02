@@ -181,7 +181,7 @@ def synthesize_voice(md_file_path, characters_file_path,config,voice_data_path):
 
     mp3_files = []
     for i, entry in enumerate(results):
-        print('正在合成第'，i+1，'段。总共段数：',len(results))
+        print('正在合成第',i+1,'段。总共段数：',len(results))
         text = entry['text']
         port = entry['p']
         try:
