@@ -28,7 +28,7 @@ https://www.bilibili.com/video/BV1rA4m157aw/?share_source=copy_web&vd_source=e8e
 ## 快速上手
 创建python 环境
  ```bash
-conda create env -n Novels python=3.10
+conda create --name Novels python=3.10
 conda activate Novels
 pip install git-lfs
 
