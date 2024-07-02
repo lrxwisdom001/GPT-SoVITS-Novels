@@ -1,3 +1,5 @@
+**其他语言版本: [English](README.md), [中文](README_zh.md).**
+
 # GPT-SoVITS-Novels
 Let Genshin characters read novels for you!
 
