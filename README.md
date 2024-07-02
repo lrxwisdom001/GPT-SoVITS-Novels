@@ -35,7 +35,7 @@ pip install git-lfs
   ```
 git-lfs 必须安装，用brew，apt-get等工具安装也可，否则后面GPT-SoVITS会报错。
 
-下载项目文件，安装依赖库。
+下载项目文件，安装依赖库，创建Voice_data和Output_temp文件夹。
  ```bash
 git clone https://github.com/lrxwisdom001/GPT-SoVITS-Novels.git
 cd GPT-SoVITS-Novels
