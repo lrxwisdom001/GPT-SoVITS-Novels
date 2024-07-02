@@ -10,9 +10,9 @@ Let Genshin characters read novels for you!
 包括代码，1个小说《不让江山》的片段，及合成的后的声音样本。
 
 合成样本需要用到，5个原神角色声音（派蒙，久岐忍，五郎，班尼特，艾尔海森）的样本及对应的GPT-SoVITS配置文件。
-由于github容量限制，传到baidu网盘和Google Drive
+由于Github容量限制，传到Baidu网盘和Google Drive
 
-baidu网盘：
+Baidu网盘：
 
 Google Drive：
 
@@ -23,7 +23,26 @@ https://www.bilibili.com/video/BV1rA4m157aw/?share_source=copy_web&vd_source=e8e
 目前只看到中文的，其他语言还请自行寻找，或用GPT-SoVITS自行训练：
 
 ## 快速上手
+创建python 环境
+ ```bash
+conda env creat -n Novels python=3.10
+conda activate Novels
+pip install git-lfs
+  ```
+git-lfs 用brew apt等工具安装也可，但必须安装，否则后面GPT-SoVITS会报错。
 
  ```bash
 git clone https://github.com/lrxwisdom001/GPT-SoVITS-Novels.git
+cd GPT-SoVITS-Novels
+mkdir pretrained_models && cd pretrained_models && git lfs clone https://huggingface.co/lj1995/GPT-SoVITS
   ```
+下载Baidu网盘或者Google Drive里面的样本声音和配置文件，解压之后放入Voice_data文件夹（若使用自己的声音样本，此步可跳过。但需要修改 voice_server_config.json）
+下载GPT-SoVITS
+ ```bash
+git clone https://github.com/lrxwisdom001/GPT-SoVITS-Novels.git
+cd GPT-SoVITS-Novels
+  ```
+## 后续工作
+- [ ]加入更多语言和角色的samples
+- [ ]加入情绪分析
+- [ ]基于情绪分析自动插入音乐
