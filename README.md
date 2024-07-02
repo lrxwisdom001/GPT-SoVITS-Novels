@@ -46,7 +46,7 @@ pip install -r requirements.txt
 <p id="1">"Voice_data.zip"下载地址</p> 
 
  ```bash
-Baidu网盘：链接: https://pan.baidu.com/s/1EmfepzvqtYnWbxtEpxcylQ?pwd=ry63 提取码: ry63 
+Baidu网盘：https://pan.baidu.com/s/1EmfepzvqtYnWbxtEpxcylQ?pwd=ry63 提取码: ry63 
 
 Hugging Face：https://huggingface.co/datasets/lrxwisdom001/GPT-SoVITS-Novels/blob/main/Voice_data.zip
   ```
