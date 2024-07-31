@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>用户界面</title>
+    <link rel="stylesheet" href="https://codemirror.net/lib/codemirror.css">
+    <script src="https://codemirror.net/lib/codemirror.js"></script>
+    <script src="https://codemirror.net/mode/javascript/javascript.js"></script>
+    <script src="https://codemirror.net/mode/python/python.js"></script>
+    <script src="https://codemirror.net/mode/htmlmixed/htmlmixed.js"></script>
+    <script src="https://codemirror.net/mode/xml/xml.js"></script>
+    <script src="https://codemirror.net/mode/css/css.js"></script>
+    <style>
+        {% load static %}
+        body {
+            background-image: url("{% static 'GenshinImpactSplashArt.jpg' %}");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            margin-top: 300px; /* 根据需要调整 */
+            margin-bottom: 80px; /* 根据需要调整 */
+            flex: 1;
+            overflow-y: auto;
+        }
+
+        .column {
+            flex: 1;
+            margin: 0 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+
+        #column1 {
+            flex: 4;
+        }
+        
+        #column2 {
+            flex: 6;
+        }
+        .column .input-field,
+        .column textarea {
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+
+        .input-field {
+            height: 30px;
+        }
+
+        .column textarea {
+            height: 150px;
+        }
+        .system-message-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(245, 245, 245, 0.8);
+            padding: 10px;
+            text-align: center;
+            border-bottom: 1px solid #ccc;
+            z-index: 1000;
+        }
+
+        #chat-box {
+            border: 1px solid #ccc;
+            padding: 10px;
+            height: 100px;
+            overflow-y: scroll;
+            margin-bottom: 20px;
+            margin-left: auto;
+            margin-right: auto;
+            width: 60%;
+            text-align: center;
+        }
+        
+        .message {
+            margin: 5px 0;
+        }
+        .user-message {
+            color: blue;
+        }
+        .response-message {
+            color: green;
+        }
+
+        .button-container {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(245, 245, 245, 0.8);
+            text-align: center;
+            padding: 10px;
+            border-top: 1px solid #ccc;
+            z-index: 1000;
+        }
+
+        .button-container button {
+            font-size: 18px;
+            padding: 10px 20px;
+            background-color: #ff5722;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .button-container button:hover {
+            background-color: #e64a19;
+        }
+
+        .column .small-button {
+            font-size: 14px;
+            padding: 8px 16px;
+            background-color: #757575;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .column .small-button:hover {
+            background-color: #616161;
+        }
+    </style>
+</head>
+<body>
+    <div class="system-message-container">
+        <h1>GPT-SoVITS-Novel</h1>
+        <p>Genshin characters read novels for you!</p>
+        <div id="chat-box">
+            <!-- 对话历史显示在这里 -->
+        </div>
+    </div>
+    <div class="container">
+        <div class="column" id="column1">
+            <h2>第一步：小说原文处理</h2>
+            <input id="api_key" class="input-field" type="password" placeholder="请输入openapi_key"></input>
+            <p>
+            <textarea id="novel_origin" placeholder="请输入小说原文"></textarea>
+            <button class="small-button" onclick=" process_novel()">发送给ChatGPT<br>处理原文</button>
+            
+            <h2>第二步：台词本化小说处理</h2>
+            <textarea id="novel_script" placeholder="请用“处理原文”功能生成&#10;或&#10;直接输入台词本化后的小说"></textarea>
+            <button class="small-button" onclick="process_script()">生成声音预览</button>
+            <div id="status1"></div>
+        </div>
+        <div class="column" id="column2">
+            <h2>第三步：角色音源选择</h2>
+            <textarea id="document2" placeholder="点击“生成声音预览”后可选择角色音源" readonly></textarea>
+            <div id="status2"></div>
+            
+            <h2>第四步：场景音乐选择</h2>
+            <textarea id="document3" placeholder="点击“生成声音预览”后可选择场景音乐" readonly></textarea>
+            <div id="status3"></div>
+        </div>
+    </div>
+    <div class="button-container">
+        <button id = generate-button onclick="generate()">最后一步：合成有声书</button>
+    </div>
+    <script>
+        function process_novel() {
+            const apiKey = document.getElementById('api_key').value;
+            const userInput = document.getElementById('novel_origin').value;
+            const chatBox = document.getElementById('chat-box');
+            const novelScriptTextarea = document.getElementById('novel_script');
+            // 清空novelScriptTextarea
+            novelScriptTextarea.value = ''
+            // Display user input in the chat box
+            const userMessage = document.createElement('div');
+            userMessage.className = 'message user-message';
+            userMessage.innerText = '小说内容已发送，请等待处理完成提示。\n处理结果在“第二步：台词本化小说处理”中实时更新。';
+            chatBox.appendChild(userMessage);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        
+            // Prepare data to be sent to the server
+            const jsonData = {
+                'api_key': apiKey,
+                'novel_origin': userInput
+            };
+            const jsonDataString = JSON.stringify(jsonData);
+        
+            // Send the request to the server
+            fetch('/novel_to_GPT/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': getCookie('csrftoken')
+                },
+                body: jsonDataString
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.task_id) {
+                    checkTaskStatus_GPT(data.task_id);
+                } else {
+                    console.error('Failed to start task.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+            
+        }
+        
+        function checkTaskStatus_GPT(taskId) {
+            fetch(`/check_task_status/${taskId}/`)
+            .then(response => response.json())
+            .then(data => {
+                const chatBox = document.getElementById('chat-box');
+                const novelScriptTextarea = document.getElementById('novel_script');
+                if (data.output) {
+                 
+                     // Append output to the textarea
+                novelScriptTextarea.value = data.output.join('\n');
+                novelScriptTextarea.scrollTop = novelScriptTextarea.scrollHeight; // Scroll to the bottom
+                }
+        
+                if (data.status === 'running') {
+                    setTimeout(() => checkTaskStatus_GPT(taskId), 2000);  // 每2秒查询一次状态
+                } else {
+                    if (data.status === 'success') {
+                        console.log('Task completed successfully');
+                        const downloadMessage = document.createElement('div');
+                        downloadMessage.className = 'message response-message';
+                        downloadMessage.innerHTML = '小说原文处理完成';
+                        chatBox.appendChild(downloadMessage);
+                        chatBox.scrollTop = chatBox.scrollHeight;
+
+                    } else {
+                        console.error('Task failed');
+                        const errorMessage = document.createElement('div');
+                        errorMessage.className = 'message response-message';
+                        errorMessage.innerText = '小说原文处理完成失败，请重试。';
+                        chatBox.appendChild(errorMessage);
+                    }
+                    document.getElementById('generate-button').disabled = false;  // 任务完成后重新启用按钮
+                }
+        
+            });
+        }
+
+        function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+
+        function process_script() {
+            const documentContent = document.getElementById('novel_script').value;
+
+            fetch('/process_script/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': getCookie('csrftoken')
+                },
+                body: JSON.stringify({'document_content': documentContent})
+            })
+            .then(response => response.json())
+            .then(data => {
+                let iframe1 = document.getElementById('iframe1');
+                if (!iframe1) {
+                    let document2 = document.getElementById('document2');
+                    iframe1 = document.createElement('iframe');
+                    iframe1.id = 'iframe1';
+                    iframe1.width = "100%";
+                    iframe1.height = "400";
+                    iframe1.frameBorder = "0";
+                    iframe1.src = "{% static 'character_voice.html' %}";
+                    if (document2) {
+                        document2.parentNode.replaceChild(iframe1, document2);
+                    } else {
+                        document.getElementById('status2').appendChild(iframe1);
+                    }
+                } else {
+                    iframe1.src = "{% static 'character_voice.html' %}";
+                }
+                
+                let iframe2 = document.getElementById('iframe2');
+                if (!iframe2) {
+                    let document3 = document.getElementById('document3');
+                    iframe2 = document.createElement('iframe');
+                    iframe2.id = 'iframe2';
+                    iframe2.width = "100%";
+                    iframe2.height = "400";
+                    iframe2.frameBorder = "0";
+                    iframe2.src = "{% static 'scene_bgm.html' %}";
+                    if (document3) {
+                        document3.parentNode.replaceChild(iframe2, document3);
+                    } else {
+                        document.getElementById('status3').appendChild(iframe2);
+                    }
+                } else {
+                    iframe2.src = "{% static 'scene_bgm.html' %}";
+                }
+        
+                const chatBox = document.getElementById('chat-box');
+                const statusMessage = document.createElement('div');
+                statusMessage.className = 'message response-message';
+                statusMessage.innerText = '角色音源和场景音乐已更新';
+                chatBox.appendChild(statusMessage);
+                chatBox.scrollTop = chatBox.scrollHeight;
+            });
+        }
+
+        function generate() {
+            const generateButton = document.getElementById('generate-button');
+            generateButton.disabled = true;  // 禁用按钮
+
+            const chatBox = document.getElementById('chat-box');
+            const sendingMessage = document.createElement('div');
+            sendingMessage.className = 'message response-message';
+            sendingMessage.innerText = '发送音源数据，开始合成';
+            chatBox.appendChild(sendingMessage);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        
+            let tableData = {
+                table_bgm: [],
+                table_voice: [],
+                novel_script: ""
+            };
+
+            // 收集小说脚本数据
+            const novelScriptTextarea = document.getElementById('novel_script');
+            tableData.novel_script = novelScriptTextarea.value;
+        
+            // 从第一个 iframe 中收集 table_voice 数据
+            try {
+                const iframe1 = document.getElementById('iframe1');
+                const iframe1Document = iframe1.contentDocument || iframe1.contentWindow.document;
+                const tableVoiceElement = iframe1Document.getElementById('table_voice');
+        
+                if (tableVoiceElement) {
+                    const rows = tableVoiceElement.querySelectorAll('tr');
+                    rows.forEach(row => {
+                        let rowData = {};
+        
+                        const cells = row.querySelectorAll('td');
+                        cells.forEach((cell, index) => {
+                            if (cell.querySelector('audio')) {
+                                return;
+                            }
+        
+                            const selectElement = cell.querySelector('select');
+                            if (selectElement) {
+                                const selectedOption = selectElement.options[selectElement.selectedIndex];
+                                const value = selectedOption.value || '无 value 属性';
+                                rowData[`cell_${index}`] = `${value}`;
+                            } else {
+                                const cellText = cell.innerText || cell.textContent || '无内容';
+                                rowData[`cell_${index}`] = `${cellText}`;
+                            }
+                        });
+        
+                        if (Object.keys(rowData).length > 0) {
+                            tableData.table_voice.push(rowData);
+                        }
+                    });
+                } else {
+                    tableData.table_voice.push({ error: '未找到 id="table_voice" 的元素。' });
+                }
+            } catch (error) {
+                tableData.table_voice.push({ error: '无法访问 iframe1 内容。可能存在跨域限制。' });
+            }
+        
+            // 从第二个 iframe 中收集 table_bgm 数据
+            try {
+                const iframe2 = document.getElementById('iframe2');
+                const iframe2Document = iframe2.contentDocument || iframe2.contentWindow.document;
+                const tableBgmElement = iframe2Document.getElementById('table_bgm');
+        
+                if (tableBgmElement) {
+                    const rows = tableBgmElement.querySelectorAll('tr');
+                    rows.forEach(row => {
+                        let rowData = {};
+        
+                        const cells = row.querySelectorAll('td');
+                        cells.forEach((cell, index) => {
+                            if (cell.querySelector('audio')) {
+                                return;
+                            }
+        
+                            const selectElement = cell.querySelector('select');
+                            if (selectElement) {
+                                const selectedOption = selectElement.options[selectElement.selectedIndex];
+                                const dataFileValue = selectedOption.getAttribute('data-file') || '无 data-file 属性';
+                                rowData[`cell_${index}`] = `${dataFileValue}`;
+                            } else {
+                                const cellText = cell.innerText || cell.textContent || '无内容';
+                                rowData[`cell_${index}`] = `${cellText}`;
+                            }
+                        });
+        
+                        if (Object.keys(rowData).length > 0) {
+                            tableData.table_bgm.push(rowData);
+                        }
+                    });
+                } else {
+                    tableData.table_bgm.push({ error: '未找到 id="table_bgm" 的元素。' });
+                }
+            } catch (error) {
+                tableData.table_bgm.push({ error: '无法访问 iframe2 内容。可能存在跨域限制。' });
+            }
+
+
+        
+            // 转换数据为 JSON 字符串
+            const jsonDataString = JSON.stringify(tableData);
+        
+            // 发送请求到服务器
+            fetch('/generate_audiobook/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': getCookie('csrftoken')
+                },
+                body: jsonDataString
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.task_id) {
+                    checkTaskStatus(data.task_id);
+                } else {
+                    console.error('Failed to start task.');
+                    generateButton.disabled = false;  // 重新启用按钮
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                generateButton.disabled = false;  // 重新启用按钮
+            });
+            
+        
+
+        }
+        
+        function checkTaskStatus(taskId) {
+            fetch(`/check_task_status/${taskId}/`)
+            .then(response => response.json())
+            .then(data => {
+                const chatBox = document.getElementById('chat-box');
+        
+                if (data.output) {
+                    data.output.forEach(line => {
+                        const outputMessage = document.createElement('div');
+                        outputMessage.className = 'message response-message';
+                        outputMessage.innerText = line;
+                        chatBox.appendChild(outputMessage);
+                    });
+                    chatBox.scrollTop = chatBox.scrollHeight;
+                }
+        
+                if (data.status === 'running') {
+                    setTimeout(() => checkTaskStatus(taskId), 2000);  // 每2秒查询一次状态
+                } else {
+                    if (data.status === 'success') {
+                        console.log('Task completed successfully');
+                        const downloadMessage = document.createElement('div');
+                        downloadMessage.className = 'message response-message';
+                        downloadMessage.innerHTML = '任务完成！<a href="{% static 'final_combined_audio.mp3' %}" download>点击这里下载合成音频</a>';
+                        chatBox.appendChild(downloadMessage);
+                        chatBox.scrollTop = chatBox.scrollHeight;
+
+                    } else {
+                        console.error('Task failed');
+                        const errorMessage = document.createElement('div');
+                        errorMessage.className = 'message response-message';
+                        errorMessage.innerText = '任务失败，请重试。';
+                        chatBox.appendChild(errorMessage);
+                    }
+                    document.getElementById('generate-button').disabled = false;  // 任务完成后重新启用按钮
+                }
+        
+            });
+        }
+        
+        
+        document.addEventListener("DOMContentLoaded", function() {
+            initializeAudioLibrary();
+            const chatBox = document.getElementById('chat-box');
+            const welcomeMessage = document.createElement('div');
+            welcomeMessage.className = 'message response-message';
+            welcomeMessage.innerText = '欢迎使用GPT-SoVITS-Novel！请输入您的小说原文开始。';
+            chatBox.appendChild(welcomeMessage);
+            chatBox.scrollTop = chatBox.scrollHeight;
+
+
+
+       });
+
+       function initializeAudioLibrary() {
+        fetch('/initialize_audio_library/')
+        .then(response => response.json())
+        .then(data => {
+            const chatBox = document.getElementById('chat-box');
+            let initMessage = document.createElement('div');
+            initMessage.className = 'message response-message';
+    
+            if (data.status === 'success') {
+                initMessage.innerText = '音源库初始化完成';
+            } else {
+                initMessage.innerText = '音源库初始化失败: ' + (data.message || '未知错误');
+            }
+            chatBox.appendChild(initMessage);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        })
+        .catch(error => {
+            const chatBox = document.getElementById('chat-box');
+            const errorMessage = document.createElement('div');
+            errorMessage.className = 'message response-message';
+            errorMessage.innerText = '音源库初始化过程中发生错误: ' + error;
+            chatBox.appendChild(errorMessage);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        });
+    }
+    
+
+        const editor1 = CodeMirror.fromTextArea(document.getElementById('novel_script'), {
+            lineNumbers: true,
+            mode: "javascript",
+            theme: "default"
+        });
+
+        const editor2 = CodeMirror.fromTextArea(document.getElementById('document2'), {
+            lineNumbers: true,
+            mode: "python",
+            theme: "default"
+        });
+    </script>
+</body>
+</html>

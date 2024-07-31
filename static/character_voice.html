@@ -1,0 +1,53 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>角色音源</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <style>
+            body, .container {
+                margin: 1px; /* 调整页面的外边距 */
+                padding: 0;
+            }
+            table {
+                margin: 1px;
+                width: 100%;
+                border-collapse: collapse; /* 去掉表格单元格之间的间隙 */
+            }
+            th, td {
+                padding: 1px; /* 减小单元格内边距 */
+            }
+
+        </style>
+        <script>
+            function updateSampleFile(selectElement, audioId) {
+                var selectedOption = selectElement.options[selectElement.selectedIndex];
+                var audioElement = document.getElementById(audioId);
+                if (audioElement) {
+                    audioElement.src = selectedOption.getAttribute('data-file');
+                    audioElement.load();
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <!-- <h1 class="text-center">角色音源表</h1> -->
+            <table class="table table-bordered" id=table_voice>
+                <thead>
+                    <tr>
+                        <th>角色</th>
+                        <th>音源</th>
+                        <th>声音样本</th>
+                    </tr>
+                </thead>
+                <tbody>
+    
+                </tbody>
+            </table>
+        </div>
+    </body>
+    </html>
+    

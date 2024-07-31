@@ -1,0 +1,88 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>角色音源</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <script>
+            function updateSampleFile(selectElement, audioId) {
+                var selectedOption = selectElement.options[selectElement.selectedIndex];
+                var audioElement = document.getElementById(audioId);
+                audioElement.src = selectedOption.getAttribute('data-file');
+                audioElement.load();
+            }
+        </script>
+    </head>
+    <body>
+        <div class="container mt-5">
+            <!--  <h1 class="text-center">角色音源表</h1> -->
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>角色</th>
+                        <th>音源</th>
+                        <th>声音样本</th>
+                    </tr>
+                </thead>
+                <tbody>
+    <tr><td>旁白</td>
+            <td>
+                <select class="form-control" onchange="updateSampleFile(this, 'audio-0')">
+        <option value='paimeng' data-file='../Voice_data_sentiment/paimeng/paimeng_3_哇，这个，还有这个…只是和史莱姆打了一场，就有这么多结论吗？.wav' >派蒙 女 声音沙哑的可爱萝莉</option><option value='aierhaisen' data-file='../Voice_data_sentiment/aierhaisen/aierhaisen_3_读书并不会让人变聪明，看看教令院里的那些家伙就知道了。.mp3' >艾尔海森 男 声音不紧不慢的高冷帅哥</option><option value='bannite' data-file='../Voice_data_sentiment/bannite/bannite_3_俗话说「等在原地是不会有好事发生的」，当然以我的运气来说，往哪里走都一样啦….mp3' >班尼特 男 开朗的正太音</option><option value='jiuqiren' data-file='../Voice_data_sentiment/jiuqiren/jiuqiren_3_有些委托，在夜晚才好办。我不放心交给他们，都是我亲自上。.mp3' >久岐忍 女 略带沙哑的御姐音</option><option value='keqing' data-file='../Voice_data_sentiment/keqing/keqing_3_我是刻晴，璃月七星中的「玉衡」。变革的时机已经到来，维持了千年的秩序即将被改写。这历史性的时刻，你愿意和我一起见证吗？.mp3' >刻晴 女 清脆的御姐音</option><option value='liulangzhe' data-file='../Voice_data_sentiment/liulangzhe/liulangzhe_3_这世上没有纯粹的自由。风也会有吹到头的时候。.mp3' >流浪者 男 比较尖的人妖音</option><option value='ningguang' data-file='../Voice_data_sentiment/ningguang/ningguang_3_我是七星之「天权」，凝光。要做个交易吗？你来做我的贴身侍卫，而我，会教导你在璃月出人头地的技巧。.mp3' >凝光 女 上位者不紧不慢的御姐音</option><option value='qiqi' data-file='../Voice_data_sentiment/qiqi/qiqi_3_我是七七，是个僵尸…啊，还要说什么来着。.mp3' >七七 女 沙哑慵懒的僵尸女</option><option value='sainuo' data-file='../Voice_data_sentiment/sainuo/sainuo_3_我是赛诺，教令院的「大风纪官」。维护规则、审判罪恶是我的职责，今后的旅途中，我会保护好你的安全。.mp3' >赛诺 男 和蔼的领导者</option><option value='wulang' data-file='../Voice_data_sentiment/wulang/wulang_3_轻装上阵也有不方便的时候，比如，一旦遇上火攻，我的尾巴就要格外小心。.mp3' selected>五郎 男 想象正面的正常男声</option><option value='youla' data-file='../Voice_data_sentiment/youla/youla_3_骑士和贵族的礼仪一脉相承，只是前者脚踏实地，简化了繁文缛节。.mp3' >优拉 女 正直的女骑士</option>
+                </select>
+            </td>
+        
+            <td>
+                <audio id="audio-0" controls>
+                    <source src="../Voice_data_sentiment/wulang/wulang_3_轻装上阵也有不方便的时候，比如，一旦遇上火攻，我的尾巴就要格外小心。.mp3" type="audio/mpeg">
+                    您的浏览器不支持 audio 元素。
+                </audio>
+            </td>
+        </tr><tr><td>燕青之</td>
+            <td>
+                <select class="form-control" onchange="updateSampleFile(this, 'audio-1')">
+        <option value='paimeng' data-file='../Voice_data_sentiment/paimeng/paimeng_3_哇，这个，还有这个…只是和史莱姆打了一场，就有这么多结论吗？.wav' >派蒙 女 声音沙哑的可爱萝莉</option><option value='aierhaisen' data-file='../Voice_data_sentiment/aierhaisen/aierhaisen_3_读书并不会让人变聪明，看看教令院里的那些家伙就知道了。.mp3' >艾尔海森 男 声音不紧不慢的高冷帅哥</option><option value='bannite' data-file='../Voice_data_sentiment/bannite/bannite_3_俗话说「等在原地是不会有好事发生的」，当然以我的运气来说，往哪里走都一样啦….mp3' selected>班尼特 男 开朗的正太音</option><option value='jiuqiren' data-file='../Voice_data_sentiment/jiuqiren/jiuqiren_3_有些委托，在夜晚才好办。我不放心交给他们，都是我亲自上。.mp3' >久岐忍 女 略带沙哑的御姐音</option><option value='keqing' data-file='../Voice_data_sentiment/keqing/keqing_3_我是刻晴，璃月七星中的「玉衡」。变革的时机已经到来，维持了千年的秩序即将被改写。这历史性的时刻，你愿意和我一起见证吗？.mp3' >刻晴 女 清脆的御姐音</option><option value='liulangzhe' data-file='../Voice_data_sentiment/liulangzhe/liulangzhe_3_这世上没有纯粹的自由。风也会有吹到头的时候。.mp3' >流浪者 男 比较尖的人妖音</option><option value='ningguang' data-file='../Voice_data_sentiment/ningguang/ningguang_3_我是七星之「天权」，凝光。要做个交易吗？你来做我的贴身侍卫，而我，会教导你在璃月出人头地的技巧。.mp3' >凝光 女 上位者不紧不慢的御姐音</option><option value='qiqi' data-file='../Voice_data_sentiment/qiqi/qiqi_3_我是七七，是个僵尸…啊，还要说什么来着。.mp3' >七七 女 沙哑慵懒的僵尸女</option><option value='sainuo' data-file='../Voice_data_sentiment/sainuo/sainuo_3_我是赛诺，教令院的「大风纪官」。维护规则、审判罪恶是我的职责，今后的旅途中，我会保护好你的安全。.mp3' >赛诺 男 和蔼的领导者</option><option value='wulang' data-file='../Voice_data_sentiment/wulang/wulang_3_轻装上阵也有不方便的时候，比如，一旦遇上火攻，我的尾巴就要格外小心。.mp3' >五郎 男 想象正面的正常男声</option><option value='youla' data-file='../Voice_data_sentiment/youla/youla_3_骑士和贵族的礼仪一脉相承，只是前者脚踏实地，简化了繁文缛节。.mp3' >优拉 女 正直的女骑士</option>
+                </select>
+            </td>
+        
+            <td>
+                <audio id="audio-1" controls>
+                    <source src="../Voice_data_sentiment/bannite/bannite_3_俗话说「等在原地是不会有好事发生的」，当然以我的运气来说，往哪里走都一样啦….mp3" type="audio/mpeg">
+                    您的浏览器不支持 audio 元素。
+                </audio>
+            </td>
+        </tr><tr><td>李丢丢</td>
+            <td>
+                <select class="form-control" onchange="updateSampleFile(this, 'audio-2')">
+        <option value='paimeng' data-file='../Voice_data_sentiment/paimeng/paimeng_3_哇，这个，还有这个…只是和史莱姆打了一场，就有这么多结论吗？.wav' >派蒙 女 声音沙哑的可爱萝莉</option><option value='aierhaisen' data-file='../Voice_data_sentiment/aierhaisen/aierhaisen_3_读书并不会让人变聪明，看看教令院里的那些家伙就知道了。.mp3' >艾尔海森 男 声音不紧不慢的高冷帅哥</option><option value='bannite' data-file='../Voice_data_sentiment/bannite/bannite_3_俗话说「等在原地是不会有好事发生的」，当然以我的运气来说，往哪里走都一样啦….mp3' >班尼特 男 开朗的正太音</option><option value='jiuqiren' data-file='../Voice_data_sentiment/jiuqiren/jiuqiren_3_有些委托，在夜晚才好办。我不放心交给他们，都是我亲自上。.mp3' >久岐忍 女 略带沙哑的御姐音</option><option value='keqing' data-file='../Voice_data_sentiment/keqing/keqing_3_我是刻晴，璃月七星中的「玉衡」。变革的时机已经到来，维持了千年的秩序即将被改写。这历史性的时刻，你愿意和我一起见证吗？.mp3' >刻晴 女 清脆的御姐音</option><option value='liulangzhe' data-file='../Voice_data_sentiment/liulangzhe/liulangzhe_3_这世上没有纯粹的自由。风也会有吹到头的时候。.mp3' >流浪者 男 比较尖的人妖音</option><option value='ningguang' data-file='../Voice_data_sentiment/ningguang/ningguang_3_我是七星之「天权」，凝光。要做个交易吗？你来做我的贴身侍卫，而我，会教导你在璃月出人头地的技巧。.mp3' >凝光 女 上位者不紧不慢的御姐音</option><option value='qiqi' data-file='../Voice_data_sentiment/qiqi/qiqi_3_我是七七，是个僵尸…啊，还要说什么来着。.mp3' >七七 女 沙哑慵懒的僵尸女</option><option value='sainuo' data-file='../Voice_data_sentiment/sainuo/sainuo_3_我是赛诺，教令院的「大风纪官」。维护规则、审判罪恶是我的职责，今后的旅途中，我会保护好你的安全。.mp3' selected>赛诺 男 和蔼的领导者</option><option value='wulang' data-file='../Voice_data_sentiment/wulang/wulang_3_轻装上阵也有不方便的时候，比如，一旦遇上火攻，我的尾巴就要格外小心。.mp3' >五郎 男 想象正面的正常男声</option><option value='youla' data-file='../Voice_data_sentiment/youla/youla_3_骑士和贵族的礼仪一脉相承，只是前者脚踏实地，简化了繁文缛节。.mp3' >优拉 女 正直的女骑士</option>
+                </select>
+            </td>
+        
+            <td>
+                <audio id="audio-2" controls>
+                    <source src="../Voice_data_sentiment/sainuo/sainuo_3_我是赛诺，教令院的「大风纪官」。维护规则、审判罪恶是我的职责，今后的旅途中，我会保护好你的安全。.mp3" type="audio/mpeg">
+                    您的浏览器不支持 audio 元素。
+                </audio>
+            </td>
+        </tr><tr><td>高希宁</td>
+            <td>
+                <select class="form-control" onchange="updateSampleFile(this, 'audio-3')">
+        <option value='paimeng' data-file='../Voice_data_sentiment/paimeng/paimeng_3_哇，这个，还有这个…只是和史莱姆打了一场，就有这么多结论吗？.wav' >派蒙 女 声音沙哑的可爱萝莉</option><option value='aierhaisen' data-file='../Voice_data_sentiment/aierhaisen/aierhaisen_3_读书并不会让人变聪明，看看教令院里的那些家伙就知道了。.mp3' >艾尔海森 男 声音不紧不慢的高冷帅哥</option><option value='bannite' data-file='../Voice_data_sentiment/bannite/bannite_3_俗话说「等在原地是不会有好事发生的」，当然以我的运气来说，往哪里走都一样啦….mp3' >班尼特 男 开朗的正太音</option><option value='jiuqiren' data-file='../Voice_data_sentiment/jiuqiren/jiuqiren_3_有些委托，在夜晚才好办。我不放心交给他们，都是我亲自上。.mp3' selected>久岐忍 女 略带沙哑的御姐音</option><option value='keqing' data-file='../Voice_data_sentiment/keqing/keqing_3_我是刻晴，璃月七星中的「玉衡」。变革的时机已经到来，维持了千年的秩序即将被改写。这历史性的时刻，你愿意和我一起见证吗？.mp3' >刻晴 女 清脆的御姐音</option><option value='liulangzhe' data-file='../Voice_data_sentiment/liulangzhe/liulangzhe_3_这世上没有纯粹的自由。风也会有吹到头的时候。.mp3' >流浪者 男 比较尖的人妖音</option><option value='ningguang' data-file='../Voice_data_sentiment/ningguang/ningguang_3_我是七星之「天权」，凝光。要做个交易吗？你来做我的贴身侍卫，而我，会教导你在璃月出人头地的技巧。.mp3' >凝光 女 上位者不紧不慢的御姐音</option><option value='qiqi' data-file='../Voice_data_sentiment/qiqi/qiqi_3_我是七七，是个僵尸…啊，还要说什么来着。.mp3' >七七 女 沙哑慵懒的僵尸女</option><option value='sainuo' data-file='../Voice_data_sentiment/sainuo/sainuo_3_我是赛诺，教令院的「大风纪官」。维护规则、审判罪恶是我的职责，今后的旅途中，我会保护好你的安全。.mp3' >赛诺 男 和蔼的领导者</option><option value='wulang' data-file='../Voice_data_sentiment/wulang/wulang_3_轻装上阵也有不方便的时候，比如，一旦遇上火攻，我的尾巴就要格外小心。.mp3' >五郎 男 想象正面的正常男声</option><option value='youla' data-file='../Voice_data_sentiment/youla/youla_3_骑士和贵族的礼仪一脉相承，只是前者脚踏实地，简化了繁文缛节。.mp3' >优拉 女 正直的女骑士</option>
+                </select>
+            </td>
+        
+            <td>
+                <audio id="audio-3" controls>
+                    <source src="../Voice_data_sentiment/jiuqiren/jiuqiren_3_有些委托，在夜晚才好办。我不放心交给他们，都是我亲自上。.mp3" type="audio/mpeg">
+                    您的浏览器不支持 audio 元素。
+                </audio>
+            </td>
+        </tr>
+                </tbody>
+            </table>
+        </div>
+    </body>
+    </html>
+    
