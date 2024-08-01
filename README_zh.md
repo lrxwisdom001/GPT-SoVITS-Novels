@@ -16,7 +16,10 @@ Let Genshin characters read novels for you!
 本项目利用ChatGPT的openai api和GPT-SoVITS，快速将任意的小说文本转换成多角色联播的有声读物。
 
 ## 项目Repository里面有什么？
-新版本，增加网页版UI，情绪分析，可以根据角色台词感情调整语气，场景类型分配音乐。音源样本文件和GPT-SoVITS本体已整合进github，无需额外下载。
+新版本，增加网页版UI，情绪分析，可以根据角色台词感情调整语气，场景类型分配音乐。
+
+因为GitHub空间限制，本repo只有必要代码，完整包请移步Hugging Face或者百度网盘下载。
+
 
 ## 快速上手
 创建python 环境
