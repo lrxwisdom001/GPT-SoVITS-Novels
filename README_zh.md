@@ -50,7 +50,7 @@ pip install -r requirements.txt
  ```bash
 python manage.py runserver
   ```
-在浏览器地址栏输入， 最好使用**隐身模式**防止插件导致网页错误加载！
+在浏览器地址栏输入， 最好使用**safari或者隐身模式**防止插件导致网页错误加载！
  ```md
 http://127.0.0.1:8000
   ```
