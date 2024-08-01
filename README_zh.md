@@ -16,16 +16,7 @@ Let Genshin characters read novels for you!
 本项目利用ChatGPT的openai api和GPT-SoVITS，快速将任意的小说文本转换成多角色联播的有声读物。
 
 ## 项目Repository里面有什么？
-包括代码，1个小说《不让江山》的片段，及合成的后的声音样本。
-
-合成样本需要用到，5个原神角色声音（派蒙，久岐忍，五郎，班尼特，艾尔海森）的样本及对应的GPT-SoVITS配置文件。
-由于Github容量限制，传到Baidu网盘和Hugging Face，链接见快速上手教程 ["Voice_data.zip"下载地址](#1)
-
-更多声音样本和配置文件请转到：
-特看科技的滚石 
-【原神全角色GPT-sovits音色模型克隆，八重神子的声音太酥了啊啊啊啊】 
-https://www.bilibili.com/video/BV1rA4m157aw/?share_source=copy_web&vd_source=e8e5bbbe8195c50ca4a9ea44fdd8843c
-目前只找到中文的，其他语言还请自行寻找，或用GPT-SoVITS自行训练：
+新版本，增加网页版UI，情绪分析，可以根据角色台词感情调整语气，场景类型分配音乐。音源样本文件和GPT-SoVITS本体已整合进github，无需额外下载。
 
 ## 快速上手
 创建python 环境
@@ -37,52 +28,78 @@ pip install git-lfs
   ```
 git-lfs 必须安装，用brew，apt-get等工具安装也可，否则后面GPT-SoVITS会报错。
 
-下载项目文件，安装依赖库，创建Voice_data和Output_temp文件夹。
+下载项目文件，安装依赖库。
  ```bash
 git clone https://github.com/lrxwisdom001/GPT-SoVITS-Novels.git
 cd GPT-SoVITS-Novels
-mkdir Output_temp
-mkdir Voice_data
 pip install -r requirements.txt
   ```
-下载Baidu网盘或者Google Drive里面的样本声音和配置文件，解压之后文件放入Voice_data文件夹（若使用自己的声音样本，此步可跳过。但需要修改 voice_server_config.json）
 
-<p id="1">"Voice_data.zip"下载地址</p> 
 
+打开网页客户端
  ```bash
-Baidu网盘：https://pan.baidu.com/s/1EmfepzvqtYnWbxtEpxcylQ?pwd=ry63 提取码: ry63 
-
-Hugging Face：https://huggingface.co/datasets/lrxwisdom001/GPT-SoVITS-Novels/blob/main/Voice_data.zip
+python manage.py runserver
+  ```
+在浏览器地址栏输入， 最好使用**隐身模式**防止插件导致网页错误加载！
+ ```md
+http://127.0.0.1:8000
   ```
 
-下载GPT-SoVITS
- ```bash
-git clone https://github.com/RVC-Boss/GPT-SoVITS.git
-cd GPT-SoVITS/GPT_SoVITS/pretrained_models && git lfs clone https://huggingface.co/lj1995/GPT-SoVITS
-mv GPT-SoVITS/* .
-rm -rf GPT-SoVITS
-cd ../../..
+跟着网页5个步骤依次完成：
+
+**第一步**：输入openai_key和小说原文，发送给chatGPT处理。
+
+**第二步**：整理chatGPT处理过的台词本化的小说（**也可以用其他工具生成直接粘贴到第二步窗口开始**）
+
+**第三步和第四步**：选择角色音源和场景音乐。
+
+最终生成 final_combined_audio.mp3，在网页上部的信息栏显示下载链接。
+
+台词本格式，角色台词以及场景音乐的数字代表的**情绪**，参照以下gpt prompt：
+ ```prompt
+ 用户会提供一段小说，先找出有几个角色有台词（包括旁白，提到名字的人物但没有台词的不算）并猜测每个角色的性别。
+格式为：
+##登场角色
+
+###角色1：旁白，男声
+###角色2：女1，女声
+###角色3：男1，男声
+
+列举完成后空一行，输出以下一行：
+##小说台词本
+
+然后把小说改成台词本的形式，开头的标题、作者信息是属于旁白的台词。每段台词都标注语气：
+1=轻急，用于恍然大悟，自言自语等语气；
+2=轻缓，用于虚弱、无力、沉吟等语气；
+3=中性，用于中性语气；
+4=重缓，用于质问，威胁，强调、调侃等语气；
+5=重急，用于危急，焦急，不耐烦等语气。
+旁白的语气多数用3，可以少量用其他语气。其他角色的语气请正常分配。每一段台词的格式：
+**角色名字**:(语气数字)台词
+一段台词中间的空格和换行符都替换成句号。如果一段台词超过3句话，请拆拆成多段。
+
+分个几个场景，不要超过5个，标注每个场景适合什么类型背景音乐。场景音乐类型：
+1=轻急，用于轻松愉快的场景；
+2=轻缓，用于悲凉的场景；
+3=中性，用于一般场景；
+4=重缓，用于高潮来临前，恐怖来袭的紧张场景；
+5=重急，用于飙车、战斗高潮等场景。
+场景的格式：
+### 场景一:(语气数字)[轻松愉快的背景音乐]教习小食堂
+
+你只需完成以上任务，不要续写小说内容！！
+以纯文本形式回答。
   ```
+背景音乐和角色音源分别在 static/BGMs 和 static/Voice_data_sentiment文件夹中，可参考其中的文件格式自行添加文件。
+如果格式正确，每次刷新网页，static/build_audio_sql.py都会自动加载新加入的文件。
 
-在gpt_script.py中输入或者在系统环境中设置自己的openai api_key
 
-将小说原文复制到novel_original.txt里面
 
-运行
- ```bash
-python main.py
-  ```
-程序会先将小说文本转换成带角色标注的md文档，然后利用GPT-SoVITS-Novels合成音频，合成音频前有一部开启合成服务，耗时较长（30s-1min视电脑速度而定），中间会有几步确认操作，GPT转换的文本（novel_modified4tts.md）可能有些问题，需要检查一下再继续。另外按照自己喜好调整一下角色音源对应表（characters2voice.json）。需输入“Y“或”N“回车后方可继续。
 
-最终生成 combined.mp3
 
 ## 视频简介、教学、及效果展示
-bilibili:【GPT-SoVITS-Novels 让原神角色们替你念小说吧】 https://www.bilibili.com/video/BV1Q3heeHE2k/?share_source=copy_web&vd_source=e8e5bbbe8195c50ca4a9ea44fdd8843c
-youtube: [Eng sub+ CN sub]【GPT-SoVITS-Novels】 Let Genshin characters read novels for you!https://youtu.be/yryOkQoHb5M?si=dGyerWanyJHLPoDD
-## 后续工作
-- [ ]加入更多语言和角色的samples
-- [ ]加入情绪分析
-- [ ]基于情绪分析自动插入音乐
+待制作
+
 
 ## 参考与学习
  ```code

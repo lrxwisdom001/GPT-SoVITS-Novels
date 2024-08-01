@@ -50,7 +50,7 @@ def extract_roles(roles_text):
     roles_list = []
     lines = roles_text.strip().split('\n')
     for line in lines:
-        if "###" in line:
+        if "###角色" in line:
             role_info = line.split('：')[1] if '：' in line else line.split(':')[1]
             role_name, role_gender = role_info.split('，') if '，' in role_info else role_info.split(',')
             roles_list.append((role_name.strip(), role_gender.strip()[0:1]))  # 去掉“声”字
