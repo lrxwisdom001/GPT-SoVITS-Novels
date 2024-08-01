@@ -18,9 +18,6 @@ Let Genshin characters read novels for you!
 ## 项目Repository里面有什么？
 新版本，增加网页版UI，情绪分析，可以根据角色台词感情调整语气，场景类型分配音乐。
 
-因为GitHub空间限制，本repo只有必要代码，完整包请移步Hugging Face或者百度网盘下载。
-
-
 ## 快速上手
 创建python 环境
  ```bash
@@ -35,7 +32,9 @@ git-lfs 必须安装，用brew，apt-get等工具安装也可，否则后面GPT-
  ```bash
 git clone https://github.com/lrxwisdom001/GPT-SoVITS-Novels.git
   ```
-完整包请从Hugging Face或者百度网盘下载
+因为GitHub空间限制，本repo只有必要代码，完整包请移步Hugging Face或者百度网盘下载。
+ ```bash
+  ```
 
 安装依赖库。
  ```bash
