@@ -15,7 +15,7 @@ Let Genshin characters read novels for you!
 ## 什么是GPT-SoVITS-Novels？
 本项目利用ChatGPT的openai api和GPT-SoVITS，快速将任意的小说文本转换成多角色联播的有声读物。
 
-## 项目Repository里面有什么？
+## 更新了什么？
 新版本，增加网页版UI，情绪分析，可以根据角色台词感情调整语气，场景类型分配音乐。
 
 ## 快速上手
