@@ -34,6 +34,9 @@ git clone https://github.com/lrxwisdom001/GPT-SoVITS-Novels.git
   ```
 因为GitHub空间限制，本repo只有必要代码，完整包请移步Hugging Face或者百度网盘下载。
  ```bash
+https://huggingface.co/datasets/lrxwisdom001/GPT-SoVITS-Novels/blob/main/GPT_SoVITS_Novels_v1.0_full_pack.zip
+
+链接: https://pan.baidu.com/s/1zXSA-VVHhb9TfFoQ9QVPGQ?pwd=reas 提取码: reas 
   ```
 
 安装依赖库。
