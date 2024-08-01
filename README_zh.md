@@ -31,9 +31,14 @@ pip install git-lfs
   ```
 git-lfs 必须安装，用brew，apt-get等工具安装也可，否则后面GPT-SoVITS会报错。
 
-下载项目文件，安装依赖库。
+下载项目文件。
  ```bash
 git clone https://github.com/lrxwisdom001/GPT-SoVITS-Novels.git
+  ```
+完整包请从Hugging Face或者百度网盘下载
+
+安装依赖库。
+ ```bash
 cd GPT-SoVITS-Novels
 pip install -r requirements.txt
   ```
