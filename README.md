@@ -32,3 +32,11 @@ Download project files.
  ```bash
 git clone https://github.com/lrxwisdom001/GPT-SoVITS-Novels.git
  ```
+
+Due to GitHub space limitations, this repository contains only the necessary code. For the full package, please visit Hugging Face or Baidu Netdisk.
+ ```bash
+https://huggingface.co/datasets/lrxwisdom001/GPT-SoVITS-Novels/blob/main/GPT_SoVITS_Novels_v1.0_full_pack.zip
+
+https://pan.baidu.com/s/1zXSA-VVHhb9TfFoQ9QVPGQ?pwd=reas Code: reas 
+ ```
+
