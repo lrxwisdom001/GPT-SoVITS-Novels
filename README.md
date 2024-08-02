@@ -100,10 +100,10 @@ Answer in plain text.
 Background music and character voices are located in the static/BGMs and static/Voice_data_sentiment folders, respectively. You can refer to the files within and add new ones if needed.
 If the format is correct, every time you refresh the web page, static/build_audio_sql.py will automatically load newly added files.
 
-##Video Introduction, Tutorial, and Demonstration
+## Video Introduction, Tutorial, and Demonstration
 [【Brand New Version】 GPT-SoVITS-Novels: Let Genshin Characters Read Novels for You] https://www.bilibili.com/video/BV11iiNegEGP/?share_source=copy_web&vd_source=e8e5bbbe8195c50ca4a9ea44fdd8843c
 
-##References and Learning
+## References and Learning
  ```code
 Listed in no particular order
 GPT-SoVITS Original Project
